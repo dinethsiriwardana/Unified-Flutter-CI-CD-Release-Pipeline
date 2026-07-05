@@ -402,12 +402,12 @@ Other developers can invoke individual jobs from this repository directly in the
 ```yaml
 jobs:
   setup:
-    uses: dinethsiriwardana/Flutter-Build---Release-Pipeline/.github/workflows/job_setup.yml@master
+    uses: dinethsiriwardana/Flutter-Github-Action-for-Play-Store-and-Testflight/.github/workflows/job_setup.yml@master
     secrets: inherit
 
   build-android:
     needs: setup
-    uses: dinethsiriwardana/Flutter-Build---Release-Pipeline/.github/workflows/job_build_android.yml@master
+    uses: dinethsiriwardana/Flutter-Github-Action-for-Play-Store-and-Testflight/.github/workflows/job_build_android.yml@master
     with:
       build_number: ${{ needs.setup.outputs.build_number }}
       version_name: ${{ needs.setup.outputs.version_name }}
