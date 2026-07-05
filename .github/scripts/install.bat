@@ -13,27 +13,27 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo 📥 Downloading release files (v1.0.0)...
-powershell -NoProfile -Command "Invoke-WebRequest -Uri 'https://github.com/dinethsiriwardana/Unified-Flutter-CI-CD-Release-Pipeline/archive/refs/tags/v1.0.0.zip' -OutFile 'release-pipeline-v1.0.0.zip'"
+echo 📥 Downloading release files (latest)...
+powershell -NoProfile -Command "Invoke-WebRequest -Uri 'https://github.com/dinethsiriwardana/Unified-Flutter-CI-CD-Release-Pipeline/archive/refs/heads/master.zip' -OutFile 'release-pipeline-master.zip'"
 if %errorlevel% neq 0 (
     echo Error: Failed to download the release zip file.
     exit /b %errorlevel%
 )
 
 echo 📦 Extracting files...
-powershell -NoProfile -Command "Expand-Archive -Path 'release-pipeline-v1.0.0.zip' -DestinationPath '.'"
+powershell -NoProfile -Command "Expand-Archive -Path 'release-pipeline-master.zip' -DestinationPath '.'"
 if %errorlevel% neq 0 (
     echo Error: Failed to extract the release zip file.
-    del /Q "release-pipeline-v1.0.0.zip"
+    del /Q "release-pipeline-master.zip"
     exit /b %errorlevel%
 )
 
 echo 📂 Copying pipeline files to project root...
-xcopy /E /I /Y "Unified-Flutter-CI-CD-Release-Pipeline-1.0.0\.github" ".github" >nul
+xcopy /E /I /Y "Unified-Flutter-CI-CD-Release-Pipeline-master\.github" ".github" >nul
 
 echo 🧹 Cleaning up temporary files...
-del /Q "release-pipeline-v1.0.0.zip"
-rmdir /S /Q "Unified-Flutter-CI-CD-Release-Pipeline-1.0.0"
+del /Q "release-pipeline-master.zip"
+rmdir /S /Q "Unified-Flutter-CI-CD-Release-Pipeline-master"
 
 echo.
 echo ✅ Installation complete!

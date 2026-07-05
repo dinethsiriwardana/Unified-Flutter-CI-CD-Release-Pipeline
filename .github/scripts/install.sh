@@ -37,11 +37,11 @@ else
     exit 1
 fi
 
-TEMP_ZIP="release-pipeline-v1.0.0.zip"
-EXTRACT_DIR="Unified-Flutter-CI-CD-Release-Pipeline-1.0.0"
-REPO_URL="https://github.com/dinethsiriwardana/Unified-Flutter-CI-CD-Release-Pipeline/archive/refs/tags/v1.0.0.zip"
+TEMP_ZIP="release-pipeline-master.zip"
+EXTRACT_DIR="Unified-Flutter-CI-CD-Release-Pipeline-master"
+REPO_URL="https://github.com/dinethsiriwardana/Unified-Flutter-CI-CD-Release-Pipeline/archive/refs/heads/master.zip"
 
-echo -e "\n📥 Downloading release files (v1.0.0)..."
+echo -e "\n📥 Downloading release files (latest)..."
 if [ "$DOWNLOAD_CMD" = "curl -L -s -o" ]; then
     curl -L -s -o "$TEMP_ZIP" "$REPO_URL"
 else
